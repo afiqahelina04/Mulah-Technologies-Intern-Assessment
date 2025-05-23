@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title> MULAH TECHNOLOGIES SDN. BHD. - INTERN ASSESSMENT </title>
+  
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    table {
+      width: 60%;
+      border-collapse: collapse;
+      margin: 30px auto;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+
+    caption {
+      caption-side: bottom;
+      font-weight: bold;
+      padding-top: 10px;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- Main Headers -->
+
+  <h1> MULAH TECHNOLOGIES SDN. BHD. </h1>
+  <h2> <br>Intern Assessment<br> </h2>
+
+
+  <!-- Table 1: Shows formulas using data references -->
+ 
+  <table>
+
+    <thead>
+      <tr>
+        <th> Category </th>
+        <th> Formula </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr> <td> Alpha   </td> <td> A5 + A20  </td> </tr>
+      <tr> <td> Beta    </td> <td> A15 / A7  </td> </tr>
+      <tr> <td> Charlie </td> <td> A13 * A12 </td> </tr>
+    </tbody>
+
+    <caption> Table 1 </caption>
+
+  </table>
+
+
+  <!-- Table 2: Final calculated results will appear here -->
+
+  <table id="results-table" >
+
+    <thead>
+      <tr>
+        <th> Category </th>
+        <th> Result </th>
+      </tr>
+    </thead>
+
+    <tbody id="results-body" >
+
+      <!-- Values will be added using JavaScript -->
+
+    </tbody>
+
+    <caption> Table 2 </caption>
+
+  </table>
+
+
+  <script>
+
+    // Imported Table_Input.csv data with index labels and their values
+
+    const csvData = [
+      ['A1', 41], ['A2', 18], ['A3', 21], ['A4', 63], ['A5', 2],
+      ['A6', 53], ['A7', 5], ['A8', 57], ['A9', 60], ['A10', 93],
+      ['A11', 28], ['A12', 3], ['A13', 90], ['A14', 39], ['A15', 80],
+      ['A16', 88], ['A17', 49], ['A18', 60], ['A19', 26], ['A20', 28]
+    ];
+
+    // Convert array into an object so we can look up values by label
+
+    const dataMap = Object.fromEntries(csvData);
+
+    // Perform the calculations based on the formulas in Table 1
+
+    const results = {
+      'Alpha': dataMap['A5'] + dataMap['A20'],       // 2 + 28 = 30
+      'Beta': dataMap['A15'] / dataMap['A7'],        // 80 / 5 = 16
+      'Charlie': dataMap['A13'] * dataMap['A12']     // 90 * 3 = 270
+    };
+
+    // Table 2 with the calculated results
+
+    const resultsBody = document.getElementById('results-body');
+
+    for (const [label, result] of Object.entries(results)) {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${label}</td><td>${result}</td>`;
+      resultsBody.appendChild(row);
+    }
+
+  </script>
+
+</body>
+
+
+</html>
